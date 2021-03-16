@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int n,b[109],i,j,m;
+void sieve()
+{
+	memset(b,0,sizeof(b));
+for(i=3;i<=sqrt(109);i=i+2)
+    {
+        if(b[i]==0)
+        {
+            for(j=i*i;j<=109;j=j+i)
+            {
+                b[j]=1;
+            }
+        }
+}
+}
+int main()
+{
+	sieve();
+	cin>>n>>m;
+	if(m<=n)
+	{
+		cout<<"NO"<<endl;
+	}
+	else
+	{
+		if(b[m]==1||m%2==0)
+		{
+			cout<<"NO"<<endl;
+		}
+		else
+		{
+			if(n==2&&m==3)
+			{
+				cout<<"YES"<<endl;
+			}
+			else
+			{
+			for(i=n+2;i<=m;i=i+2)
+			{
+				if(b[i]==0)
+				{
+					break;
+				}
+			}
+			if(i==m)
+			{
+				cout<<"YES"<<endl;
+			}
+			else
+			{
+				cout<<"NO"<<endl;
+			}
+		}
+	}
+	}
+	return 0;
+}

@@ -1,0 +1,112 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long cnt,f,t,i,j,tst,c;
+    vector<pair<long long,long long> >vec1,vec2;
+    char ch;
+    string s;
+    cin>>tst;
+    getchar();
+    while(tst--)
+    {
+        c=0;
+        s.clear();
+        for(i=0;i<12;i++)
+        {
+            cin>>ch;
+            s.push_back(ch);
+            if(ch=='X')
+            {
+                c++;
+            }
+        }
+        cnt=0;
+        f=0;
+        //cout<<c<<endl;
+        /*for(i=1;i<=12;i++)
+        {
+            if(s[i]=='X')
+            {
+                f=1;
+                break;
+            }
+        }*/
+        if(c>=1)
+        {
+            cnt++;
+            vec1.push_back(make_pair(1,12));
+        }
+        if(c==12)
+        {
+            cnt++;
+            vec1.push_back(make_pair(12,1));
+        }
+        if((s[0]=='X'&&s[4-1]=='X'&&s[7-1]=='X'&&s[10-1]=='X')||(s[2-1]=='X'&&s[5-1]=='X'&&s[8-1]=='X'&&s[11-1]=='X')||(s[3-1]=='X'&&s[6-1]=='X'&&s[9-1]=='X'&&s[12-1]=='X'))
+        {
+            cnt++;
+            vec1.push_back(make_pair(4,3));
+        }
+        if((s[1-1]=='X'&&s[5-1]=='X'&&s[9-1]=='X')||(s[2-1]=='X'&&s[6-1]=='X'&&s[10-1]=='X')||(s[3-1]=='X'&&s[7-1]=='X'&&s[11-1]=='X')||(s[4-1]=='X'&&s[8-1]=='X'&&s[12-1]=='X'))
+        {
+            cnt++;
+            vec1.push_back(make_pair(3,4));
+        }
+        f=0;
+        t=0;
+        for(i=0;i<12;i=i+2)
+        {
+            if(s[i]!='X')
+            {
+                f=1;
+            }
+            if(s[i+1]!='X')
+            {
+                t=1;
+            }
+        }
+        if(f==0||t==0)
+        {
+            cnt++;
+            vec1.push_back(make_pair(6,2));
+        }
+        f=0;
+        for(i=0;i<=5;i++)
+        {
+            if(s[i]=='X'&&s[i+6]=='X')
+            {
+                f=1;
+                break;
+            }
+        }
+        if(f==1)
+        {
+            cnt++;
+            vec1.push_back(make_pair(2,6));
+        }
+        if(cnt==0)
+        {
+            cout<<0<<endl;
+        }
+        else
+        {
+        cout<<cnt<<" ";
+        sort(vec1.begin(),vec1.end());
+        for(i=0;i<vec1.size();i++)
+        {
+            cout<<vec1[i].first<<"x"<<vec1[i].second;
+            if(i!=vec1.size()-1)
+            {
+                cout<<" ";
+            }
+            else
+            {
+                cout<<endl;
+            }
+        }
+        }
+        vec1.clear();
+        vec2.clear();
+    }
+    return 0;
+}

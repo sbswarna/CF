@@ -1,32 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
-long long n,i,j,k,x;
-vector<long long>v;
-int main()
+long long k;
+vector<long long> v;
+void F()
 {
-    k=2;
-    for(i=19; i<=10800101; i=i+9)
-    {
-        stringstream ss;
-        ss<<i;
-        string s=ss.str();
-        long long sum=0;
-        for(j=0; j<s.size(); j++)
-        {
-            sum+=(s[j]-48);
-        }
-        if(sum==10)
-        {
-            //cout<<"i="<<i<<endl;
-            v.push_back(i);
-        }
-        else
-        {
-            long long h=sum-10;
-            i=(i-9)+(log10(sum)*h);
-        }
-    }
-    cin>>n;
-    cout<<v[n-1]<<endl;
-    return 0;
+    #ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.in", "w", stdout);
+    #endif 
+}
+int main(int argc, char const *argv[])
+{
+	F();
+	long long n,k;
+	k=10000;
+	n=19;
+	while(true)
+	{
+		long long x=n,sum=0;
+		while(x>0)
+		{
+			sum+=(x%10);
+			x=x/10;
+		}
+		if(sum==10)
+			v.push_back(n);
+		n++;
+		if(v.size()==k)
+			break;
+	}
+	cin>>k;
+	cout<<v[k-1]<<endl;
+	return 0;
 }

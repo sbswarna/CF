@@ -1,33 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
-long long tst,a[105],n;
-int main()
+long long tst,n,a[105];
+void F()
 {
-    cin>>tst;
-    while(tst--)
-    {
-        cin>>n;
-        long long mx=-1,f=0,sum=0;
-        for(int i=0; i<n; i++)
-        {
-            cin>>a[i];
-            mx=max(a[i],mx);
-            sum+=a[i];
-        }
-        for(int i=1; i<=mx; i++)
-        {
-            long long x=n*i;
-            if(x>=sum)
-            {
-                f=1;
-                cout<<i<<endl;
-                break;
-            }
-        }
-        if(f==0)
-        {
-            cout<<n*(mx+1)<<endl;
-        }
-    }
-    return 0;
+    #ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.in", "w", stdout);
+    #endif 
+}
+int main(int argc, char const *argv[])
+{
+	F();
+	cin>>tst;
+	while(tst--)
+	{
+		cin>>n;
+		long long sum=0,ans,f=0;
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+			sum+=a[i];
+		}
+		if(sum%n==0)
+			sum/=n;
+		else
+			sum=(sum/n)+1;
+		sort(a,a+n);
+		int lo=lower_bound(a,a+n,sum)-a;
+		if(a[lo]==sum)
+			cout<<a[lo]<<endl;
+		else
+			cout<<sum<<endl;
+	}
+	return 0;
 }

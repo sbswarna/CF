@@ -1,31 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
-long long i,n,k,c;
-int main()
+long long n,k;
+void F()
 {
-    c=0;
-    cin>>n>>k;
-    if(n==1&&k>=1)
-        cout<<0<<endl;
-    else
-    {
-        if(n+(n-1)<k)
-        {
-            cout<<0<<endl;
-        }
-        else if(n+(n-1)==k)
-        {
-            cout<<1<<endl;
-        }
-        else
-        {
-            long long x=k/2;
-            if(x*2!=k)
-                cout<<x<<endl;
-            else
-                cout<<x-1<<endl;
-        }
-    }
-    //main();
-    return 0;
+    #ifndef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.in", "w", stdout);
+    #endif 
+}
+int main(int argc, char const *argv[])
+{
+	F();
+	cin>>n>>k;
+	if(k>n)
+	{
+		if(k-n>n)
+		{
+			cout<<0<<endl;
+		}
+		else
+		{
+			cout<<n-(k/2)<<endl;
+		}
+	}
+	else
+	{
+		cout<<(k-1)/2<<endl;
+	}
+	return 0;
 }
